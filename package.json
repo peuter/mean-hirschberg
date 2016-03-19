@@ -1,9 +1,9 @@
 {
-  "name": "vulgar-hirschberg",
-  "version": "0.1.0",
-  "description": "MEAN Hirschberg Community app",
-  "author": "Tobias Bräutigam <tbraeutigam@gmail.com>",
-  "homepage": "https://github.com/datatypevoid/ng2-mean-webpack",
+  "name": "vulgar",
+  "version": "1.0.0",
+  "description": "A simple and scalable MEAN stack development kit featuring Angular 2 (Router, Http, Forms, Services, Tests, E2E, Coverage, Dev/Prod), Express, MongoDB, Mongoose, Node, Redux, @ngrx/store,  PassportJS, Socket.io, Karma, Protractor, Jasmine, Istanbul, SASS Support, TypeScript, TSLint, NG2Lint, Hot Module Replacement, Docco, Gulp, and Webpack by @datatype_void",
+  "author": "David Newman <blackshuriken@hotmail.com>",
+  "homepage": "https://github.com/datatypevoid/vulgar",
   "license": "MIT",
   "scripts": {
     "clean": "npm cache clean && rimraf node_modules doc typings coverage dist",
@@ -128,10 +128,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/datatypevoid/ng2-mean-webpack.git"
+    "url": "https://github.com/datatypevoid/vulgar.git"
   },
   "bugs": {
-    "url": "https://github.com/datatypevoid/ng2-mean-webpack/issues"
+    "url": "https://github.com/datatypevoid/vulgar/issues"
   },
   "engines": {
     "node": ">= 4.2.1 <= 5",
