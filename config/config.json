@@ -1,0 +1,14 @@
+{
+  "ENV" : "development",
+
+  "PORT" : 3000,
+
+  "MONGO_URI" : {
+  "MONGO_URI" : {
+    "DEVELOPMENT" : "mongodb://[username:password]@host[:port]",
+      "PRODUCTION" : "mongodb://[username:password]@host[:port]",
+      "TEST" : "mongodb://[username:password]@host[:port]"
+    }
+  },
+  "SESSION_SECRET" : "4755A5E1F433BC73D4A2FE7E352DB"
+}
