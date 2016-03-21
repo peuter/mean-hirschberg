@@ -1,0 +1,33 @@
+<div class="container">
+
+  <div class="jumbotron text-center">
+      <h1>Vereine <span class="label label-info">{{clubs.length}}</span></h1>
+  </div>
+
+  <div id="clubs-list" class="row">
+      <div class="col-sm-4 col-sm-offset-4">
+          <div class="checkbox" *ngFor="#club of clubs">
+              <label>
+                  <input type="checkbox" (click)="deleteClub(club._id)" bind-checked="false">
+                  {{ club.title }}
+              </label>
+          </div>
+
+      </div>
+  </div>
+
+  <div id="club-form" class="row">
+      <div class="col-sm-8 col-sm-offset-2 text-center">
+          <form>
+              <div class="form-group">
+                  <input type="text" class="form-control input-lg text-center" placeholder="Name" [(ngModel)]="clubData.title" required>
+              </div>
+
+              <!-- createPerson() WILL CREATE NEW PERSONS -->
+              <button type="submit" class="btn btn-primary btn-lg"
+                (click)="createClub()">Add</button>
+          </form>
+      </div>
+  </div>
+
+</div>

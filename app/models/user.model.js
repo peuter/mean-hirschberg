@@ -28,8 +28,13 @@ let userSchema = mongoose.Schema({
 
     email : { type : String, unique : true }
   },
-
-  role : { type : String }
+  role: String,
+  clubRoles : [
+    {
+      type: String,
+      club: { type: mongoose.Schema.Types.ObjectId, ref: 'Club'}
+    }
+  ]
 });
 
 // ## Methods

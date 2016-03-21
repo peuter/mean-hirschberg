@@ -21,11 +21,7 @@ import {Home} from './home/home';
 // Import NgFor directive
 import {NgFor} from 'angular2/common';
 
-// Import Todo component
-import {Todo} from './todo/todo.component';
-
-// Import Recipes component
-import {Recipes} from './recipes/recipes.component';
+import {Person} from './person/person.component';
 
 /*
  * App Component
@@ -34,7 +30,7 @@ import {Recipes} from './recipes/recipes.component';
 @Component({
   selector: 'app',
   providers: [  ],
-  directives: [ Todo,
+  directives: [ Person,
                 NgFor],
   pipes: [],
   // Load our main `Sass` file into our `app` `component`
@@ -51,13 +47,7 @@ import {Recipes} from './recipes/recipes.component';
             <a [routerLink]=" ['Home'] ">Home</a>
           </li>
           <li router-active>
-            <a [routerLink]=" ['Todo'] ">Todo</a>
-          </li>
-          <li router-active>
-            <a [routerLink]=" ['Recipes'] ">NG2 Redux</a>
-          </li>
-          <li router-active>
-            <a [routerLink]=" ['About'] ">About</a>
+            <a [routerLink]=" ['Person'] ">Person</a>
           </li>
         </ul>
       </nav>
@@ -68,18 +58,14 @@ import {Recipes} from './recipes/recipes.component';
     </main>
 
     <footer>
-      Angular 2 MEAN Webpack Starter by <a [href]="url">@datatype_void</a>
-      <div>
-        <img [src]="angularLogo" width="10%">
-      </div>
+      
     </footer>
   `
 })
 @RouteConfig([
   { path: '/', name: 'Index', component: Home, useAsDefault: true },
   { path: '/home',  name: 'Home',  component: Home },
-  { path: '/todo', component: Todo, name: 'Todo' },
-  { path: '/redux', component: Recipes, name: 'Recipes' },
+  { path: '/person', component: Person, name: 'Person' },
   // Async load a component using Webpack's require with
   // es6-promise-loader and webpack `require`
   { path: '/about', name: 'About', loader: () => require('es6-promise!./about/about')('About') },

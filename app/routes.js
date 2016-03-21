@@ -10,15 +10,10 @@
 // ## Node API Routes
 
 // Define routes for the Node backend
-
-// Load our API routes for user authentication
 import authRoutes from './routes/_authentication.router.js';
-
-// Load our API routes for the `todo` component
-import todoRoutes from './routes/_todo.router.js';
-
-// Load our API routes for the `recipe` component
-import recipeRoutes from './routes/_recipe.router.js';
+import clubRoutes from './routes/_club.router.js';
+import personRoutes from './routes/_person.router.js';
+import eventRoutes from './routes/_event.router.js';
 
 export default (app, router, passport) => {
 
@@ -65,9 +60,9 @@ export default (app, router, passport) => {
   // #### RESTful API Routes
 
   // Pass in our Express app and Router
-  todoRoutes(app, router);
-
-	recipeRoutes(app, router);
+  clubRoutes(app, router);
+	personRoutes(app, router);
+  eventRoutes(app, router);
 
 	// All of our routes will be prefixed with /api
 	app.use('/api', router);
@@ -78,6 +73,6 @@ export default (app, router, passport) => {
   app.get('*', (req, res) => {
 
     // Load our src/app.html file
-    res.sendfile('./dist/index.html');
+    res.sendFile('./dist/index.html', { root: __dirname+'/../' });
   });
 };
