@@ -1,27 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="45f20173-ac95-48a6-959e-49b17d6847dc" name="Default" comment="some changes, updates and further implementations">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/events/event.component.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/events/event.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/events/event.service.ts" />
+    <list default="true" id="45f20173-ac95-48a6-959e-49b17d6847dc" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/event.model.js" afterPath="$PROJECT_DIR$/app/models/event.model.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/routes.js" afterPath="$PROJECT_DIR$/app/routes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/routes/_event.router.js" afterPath="$PROJECT_DIR$/app/routes/_event.router.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mean-hirschberg.iml" afterPath="$PROJECT_DIR$/mean-hirschberg.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/app.ts" afterPath="$PROJECT_DIR$/src/app/app.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/club/club.component.ts" afterPath="$PROJECT_DIR$/src/app/club/club.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/person/person.component.ts" afterPath="$PROJECT_DIR$/src/app/person/person.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/shared/components/accordion/accordion-group.component.ts" afterPath="$PROJECT_DIR$/src/app/shared/components/accordion/accordion-group.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/shared/components/accordion/accordion.component.ts" afterPath="$PROJECT_DIR$/src/app/shared/components/accordion/accordion.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/index.html" afterPath="$PROJECT_DIR$/src/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/polyfills.ts" afterPath="$PROJECT_DIR$/src/polyfills.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/vendor.ts" afterPath="$PROJECT_DIR$/src/vendor.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/typings/browser.d.ts" afterPath="$PROJECT_DIR$/typings/browser.d.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/typings/main.d.ts" afterPath="$PROJECT_DIR$/typings/main.d.ts" />
     </list>
     <ignored path="ng2-mean-webpack.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -1124,7 +1105,7 @@
       <workItem from="1458584747803" duration="1917000" />
       <workItem from="1458593358959" duration="1098000" />
       <workItem from="1458670647250" duration="16161000" />
-      <workItem from="1458933443450" duration="632000" />
+      <workItem from="1458933443450" duration="657000" />
     </task>
     <task id="LOCAL-00001" summary="some start">
       <created>1458594048274</created>
@@ -1133,11 +1114,18 @@
       <option name="project" value="LOCAL" />
       <updated>1458594048274</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="some changes, updates and further implementations">
+      <created>1458934082631</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1458934082631</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41109000" />
+    <option name="totallyTimeSpent" value="41134000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="0" width="1920" height="1080" extended-state="6" />
