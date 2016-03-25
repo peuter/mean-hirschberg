@@ -22,6 +22,7 @@ import {Home} from './home/home';
 import {NgFor} from 'angular2/common';
 
 import {Person} from './person/person.component';
+import {Event} from './events/event.component';
 
 /*
  * App Component
@@ -30,8 +31,7 @@ import {Person} from './person/person.component';
 @Component({
   selector: 'app',
   providers: [  ],
-  directives: [ Person,
-                NgFor],
+  directives: [ Event, Person, NgFor],
   pipes: [],
   // Load our main `Sass` file into our `app` `component`
   styleUrls: [require('!style!css!sass!../sass/main.scss')],
@@ -48,6 +48,9 @@ import {Person} from './person/person.component';
           </li>
           <li router-active>
             <a [routerLink]=" ['Person'] ">Person</a>
+          </li>
+          <li router-active>
+            <a [routerLink]=" ['Event'] ">Kalender</a>
           </li>
         </ul>
       </nav>
@@ -66,6 +69,7 @@ import {Person} from './person/person.component';
   { path: '/', name: 'Index', component: Home, useAsDefault: true },
   { path: '/home',  name: 'Home',  component: Home },
   { path: '/person', component: Person, name: 'Person' },
+  { path: '/event', component: Event, name: 'Event' },
   // Async load a component using Webpack's require with
   // es6-promise-loader and webpack `require`
   { path: '/about', name: 'About', loader: () => require('es6-promise!./about/about')('About') },

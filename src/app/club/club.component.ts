@@ -1,4 +1,4 @@
-import {Component, View} from 'angular2/core';
+import {Component} from 'angular2/core';
 import {ClubService} from './club.service';
 import {HTTP_PROVIDERS} from 'angular2/http';
 import {NgFor} from 'angular2/common';
@@ -6,9 +6,7 @@ import {NgFor} from 'angular2/common';
 // Create metadata with the `@Component` decorator
 @Component({
     selector: 'club',
-    providers: [...HTTP_PROVIDERS, ClubService]
-})
-@View({
+    providers: [...HTTP_PROVIDERS, ClubService],
     template: require('./club.html'),
 })
 export class Club {

@@ -16,7 +16,7 @@ let eventSchema = new mongoose.Schema({
   attachment: Buffer,
   start: Date,
   end: Date,
-  wholeDay: Boolean,
+  allDay: Boolean,
   link: String,
   exports: [{
     target: String,

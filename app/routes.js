@@ -14,6 +14,7 @@ import authRoutes from './routes/_authentication.router.js';
 import clubRoutes from './routes/_club.router.js';
 import personRoutes from './routes/_person.router.js';
 import eventRoutes from './routes/_event.router.js';
+var serveStatic = require('serve-static')
 
 export default (app, router, passport) => {
 
@@ -68,6 +69,8 @@ export default (app, router, passport) => {
 	app.use('/api', router);
 
   // ### Frontend Routes
+
+  app.use('/node_modules', serveStatic("./node_modules"));
 
   // Route to handle all Angular requests
   app.get('*', (req, res) => {

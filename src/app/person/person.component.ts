@@ -1,4 +1,4 @@
-import {Component, View} from 'angular2/core';
+import {Component} from 'angular2/core';
 import {PersonService} from './person.service';
 import {HTTP_PROVIDERS} from 'angular2/http';
 import {NgFor} from 'angular2/common';
@@ -6,10 +6,8 @@ import {NgFor} from 'angular2/common';
 // Create metadata with the `@Component` decorator
 @Component({
     selector: 'person',
-    providers: [...HTTP_PROVIDERS, PersonService]
-})
-@View({
-    template: require('./person.html'),
+    providers: [...HTTP_PROVIDERS, PersonService],
+    template: require('./person.html')
 })
 export class Person {
 

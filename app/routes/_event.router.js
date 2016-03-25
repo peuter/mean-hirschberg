@@ -40,7 +40,12 @@ export default (app, router) => {
         if(err)
           res.send(err);
         else
-          res.json(event);
+          res.json([{
+            title: 'Test',
+            start: '2016-03-24',
+            end: '2016-03-24',
+            allDay: true
+          }]);
       });
     });
 
