@@ -27,7 +27,7 @@ module.exports = {
   metadata: metadata,
   devtool: 'cheap-module-eval-source-map',
   // cache: true,
-  debug: true,
+  debug: false,
   // devtool: 'eval' // for faster builds use 'eval'
 
   // our angular app
@@ -56,7 +56,7 @@ module.exports = {
       //`exclude: [ helpers.root('node_modules/rxjs') ]`
       //fixed with rxjs 5 beta.3 release
       { test: /\.js$/, loader: "source-map-loader",
-        exclude: [ helpers.root('node_modules/rxjs') ]
+        exclude: [ helpers.root('node_modules') ]
       }
     ],
     loaders: [

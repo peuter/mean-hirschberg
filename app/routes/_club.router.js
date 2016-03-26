@@ -18,13 +18,7 @@ export default (app, router) => {
     // ### Create an `club`
     // Accessed at POST http://localhost:8080/api/club
     .post((req, res) => {
-      Club.create({
-        name : req.body.name,
-        foundationYear : req.body.foundationYear,
-        updated: Date.now,
-        logo: req.body.logo,
-        contact : req.body.contact
-      }, (err, club) => {
+      Club.create(req.body, (err, club) => {
         if (err)
           res.send(err);
         // DEBUG
@@ -67,14 +61,9 @@ export default (app, router) => {
         if (err)
           res.send(err);
         // Only update a field if a new value has been passed in
-        if (req.body.name)
-          club.name = req.body.name;
-        if (req.body.foundationYear)
-          club.foundationYear = req.body.foundationYear;
-        if (req.body.logo)
-          club.logo = req.body.logo;
-        if (req.body.contact)
-          club.contact = req.body.contact;
+        for (var key in req.body) {
+          club[key] = req.body[key];
+        }
         // save the `club`
         return club.save((err) => {
           if (err)

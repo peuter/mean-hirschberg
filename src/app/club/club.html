@@ -9,7 +9,7 @@
           <div class="checkbox" *ngFor="#club of clubs">
               <label>
                   <input type="checkbox" (click)="deleteClub(club._id)" bind-checked="false">
-                  {{ club.title }}
+                  {{ club.name }}
               </label>
           </div>
 
@@ -20,7 +20,12 @@
       <div class="col-sm-8 col-sm-offset-2 text-center">
           <form>
               <div class="form-group">
-                  <input type="text" class="form-control input-lg text-center" placeholder="Name" [(ngModel)]="clubData.title" required>
+                  <input type="text" class="form-control input-lg text-center" placeholder="Name" [(ngModel)]="clubData.name" required />
+                  <input type="text" class="form-control input-lg text-center" placeholder="Emailadresse" [(ngModel)]="clubData.email" />
+                  <select placeholder="Ansprechpartner" class="form-control input-lg" required  [(ngModel)]="clubData.contact">
+                    <option *ngFor="#p of persons" [value]="p._id">{{p.name.first}} {{p.name.last}}</option>
+                  </select>
+                  <p-spinner class="form-control input-lg" size="4" [(value)]="clubData.foundationYear" [min]="1899" [max]="2020"></p-spinner>
               </div>
 
               <!-- createPerson() WILL CREATE NEW PERSONS -->

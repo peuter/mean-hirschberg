@@ -10,6 +10,11 @@
     "jasmine": "github:DefinitelyTyped/DefinitelyTyped/jasmine/jasmine.d.ts#4b36b94d5910aa8a4d20bdcd5bd1f9ae6ad18d3c",
     "node": "github:DefinitelyTyped/DefinitelyTyped/node/node.d.ts#8cf8164641be73e8f1e652c2a5b967c7210b6729",
     "selenium-webdriver": "github:DefinitelyTyped/DefinitelyTyped/selenium-webdriver/selenium-webdriver.d.ts#a83677ed13add14c2ab06c7325d182d0ba2784ea",
-    "webpack": "github:DefinitelyTyped/DefinitelyTyped/webpack/webpack.d.ts#95c02169ba8fa58ac1092422efbd2e3174a206f4"
+    "webpack": "github:DefinitelyTyped/DefinitelyTyped/webpack/webpack.d.ts#95c02169ba8fa58ac1092422efbd2e3174a206f4",
+    "chart": "github:DefinitelyTyped/DefinitelyTyped/chartjs/chart.d.ts#9f28e020a04c0b726a5e21c5cf0d1fc91f0de626",
+    "jquery": "github:DefinitelyTyped/DefinitelyTyped/jquery/jquery.d.ts#56295f5058cac7ae458540423c50ac2dcf9fc711",
+    "jqueryui": "github:DefinitelyTyped/DefinitelyTyped/jqueryui/jqueryui.d.ts#a3a5cd5554dc2c0ff8955d1db0673879af3095bc",
+    "fullcalendar": "github:DefinitelyTyped/DefinitelyTyped/fullCalendar/fullCalendar.d.ts#4de74cb527395c13ba20b438c3a7a419ad931f1c",
+    "moment": "github:DefinitelyTyped/DefinitelyTyped/moment/moment-node.d.ts#1be6a281906e5cd179a97c86bd58ebf9cdc9c6a5"
   }
 }

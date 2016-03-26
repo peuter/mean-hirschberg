@@ -84,6 +84,7 @@
     "exports-loader": "^0.6.3",
     "expose-loader": "^0.7.1",
     "file-loader": "^0.8.5",
+    "fullcalendar": "^2.6.1",
     "gulp": "^3.9.0",
     "gulp-docco": "0.0.4",
     "gulp-nodemon": "^2.0.6",

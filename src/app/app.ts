@@ -23,6 +23,7 @@ import {NgFor} from 'angular2/common';
 
 import {Person} from './person/person.component';
 import {Event} from './events/event.component';
+import {Club} from './club/club.component';
 
 /*
  * App Component
@@ -31,14 +32,14 @@ import {Event} from './events/event.component';
 @Component({
   selector: 'app',
   providers: [  ],
-  directives: [ Event, Person, NgFor],
+  directives: [ Event, Person, Club, NgFor],
   pipes: [],
   // Load our main `Sass` file into our `app` `component`
   styleUrls: [require('!style!css!sass!../sass/main.scss')],
   template: `
     <header>
       <nav>
-        <h1>Hello {{ name }}</h1>
+        <h1>{{ name }}</h1>
         <ul>
           <li router-active>
             <a [routerLink]=" ['Index'] ">Index</a>
@@ -47,10 +48,13 @@ import {Event} from './events/event.component';
             <a [routerLink]=" ['Home'] ">Home</a>
           </li>
           <li router-active>
-            <a [routerLink]=" ['Person'] ">Person</a>
+            <a [routerLink]=" ['Person'] ">Personen</a>
           </li>
           <li router-active>
-            <a [routerLink]=" ['Event'] ">Kalender</a>
+            <a [routerLink]=" ['Club'] ">Vereine</a>
+          </li>
+          <li router-active>
+            <a [routerLink]=" ['Event'] ">Termine</a>
           </li>
         </ul>
       </nav>
@@ -70,14 +74,14 @@ import {Event} from './events/event.component';
   { path: '/home',  name: 'Home',  component: Home },
   { path: '/person', component: Person, name: 'Person' },
   { path: '/event', component: Event, name: 'Event' },
+  { path: '/club', component: Club, name: 'Club' },
   // Async load a component using Webpack's require with
   // es6-promise-loader and webpack `require`
   { path: '/about', name: 'About', loader: () => require('es6-promise!./about/about')('About') },
 ])
 export class App {
-  angularLogo = 'assets/img/angular-logo.png';
-  name = 'Angular 2 MEAN Webpack Starter';
-  url = 'https://twitter.com/datatype_void';
+  name = 'Hirschberg Connected';
+  url = 'https://www.hirschberg-sauerland.de';
 
   constructor() {
 

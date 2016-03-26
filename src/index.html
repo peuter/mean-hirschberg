@@ -11,8 +11,9 @@
   <!-- load the latest and greatest Bootstrap 3 styles -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="node_modules/primeui/themes/delta/theme.css" />
-  <link rel="stylesheet" type="text/css" href="app/resources/icons/css/font-awesome.min.css" />
+  <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css" />
   <link rel="stylesheet" type="text/css" href="node_modules/primeui/primeui-ng-all.min.css" />
+  <link rel="stylesheet" type="text/css" href="node_modules/fullcalendar/dist/fullcalendar.min.css" />
 
   <!-- use http://www.favicon-generator.org/ to replace files in public/icon-->
   <link rel="apple-touch-icon" sizes="57x57" href="/assets/icon/apple-icon-57x57.png">
@@ -36,7 +37,6 @@
 
   <!-- base url -->
   <base href="<%= webpackConfig.metadata.baseUrl %>">
-
 </head>
 
 <body>
@@ -45,24 +45,16 @@
     Loading...
   </app>
 
-  <!-- Google Analytics: change UA-71073175-1 to be your site's ID -->
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-71073175-1', 'auto');
-    ga('send', 'pageview');
-  </script>
+  <!-- JS for PrimeUI -->
+  <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
+  <script src="node_modules/primeui/primeui-ng-all.min.js"></script>
+  <script src="node_modules/moment/min/moment-with-locales.min.js"></script>
+  <script src="node_modules/fullcalendar/dist/fullcalendar.min.js"></script>
+  <script src="node_modules/fullcalendar/dist/lang/de.js"></script>
 
   <% if (webpackConfig.metadata.ENV === 'development') { %>
   <!-- Webpack Dev Server reload -->
   <script src="http://<%= webpackConfig.metadata.host %>:<%= webpackConfig.metadata.port %>/webpack-dev-server.js"></script>
   <% } %>
-
-  <!-- JS for PrimeUI -->
-  <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
-  <script src="node_modules/primeui/primeui-ng-all.min.js"></script>
 </body>
 </html>

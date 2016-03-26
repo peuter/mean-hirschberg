@@ -7,7 +7,6 @@
 import mongoose from 'mongoose';
 
 let eventSchema = new mongoose.Schema({
-  _id: Number,
   title: String,
   description: String,
   organizer: { type: mongoose.Schema.Types.ObjectId, ref: 'Club'},

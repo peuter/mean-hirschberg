@@ -1,14 +1,14 @@
 import {Component, ChangeDetectorRef} from 'angular2/core';
 import {EventService} from './event.service';
 import {HTTP_PROVIDERS} from 'angular2/http';
-import {Schedule} from 'primeng/primeng';
+import {Schedule, Dialog, Calendar, ToggleButton, Button} from 'primeng/primeng';
 
 // Create metadata with the `@Component` decorator
 @Component({
     selector: 'events',
     providers: [...HTTP_PROVIDERS, EventService],
     template: require('./event.html'),
-    directives: [Schedule]
+    directives: [Schedule, Dialog, Calendar, ToggleButton, Button]
 })
 export class Event {
 
@@ -17,8 +17,6 @@ export class Event {
   event: MyEvent;
 
   dialogVisible: boolean = false;
-
-  idGen: number = 100;
 
   private events: Array<MyEvent> = [];
 
@@ -31,10 +29,11 @@ export class Event {
 
   constructor(public eventService: EventService, private cd: ChangeDetectorRef) {
 
-    eventService.getAll()
+    this.cd = cd;
+    this.eventService = eventService;
+    this.eventService.getAll()
         .subscribe((res) => {
             this.events = res;
-          console.log(this.events);
         });
   }
 
@@ -78,36 +77,15 @@ export class Event {
 
   saveEvent() {
     //update
-    if(this.event.id) {
-      let index: number = this.findEventIndexById(this.event.id);
-      if(index >= 0) {
-        this.events[index] = this.event;
-      }
-    }
-    //new
-    else {
-      this.event.id = this.idGen;
-      this.events.push(this.event);
-      this.event = null;
+    if(!this.event.id) {
+      this.createEvent(this.event);
     }
 
     this.dialogVisible = false;
   }
 
-  findEventIndexById(id: number) {
-    let index = -1;
-    for(let i = 0; i < this.events.length; i++) {
-      if(id == this.events[i].id) {
-        index = i;
-        break;
-      }
-    }
-
-    return index;
-  }
-
-  createEvent() {
-      this.eventService.createEvent(this.eventData)
+  createEvent(data) {
+      this.eventService.createEvent(data)
         .subscribe((res) => {
             this.events.push(res);
         });

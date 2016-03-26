@@ -63,12 +63,9 @@ export default (app, router) => {
         if (err)
           res.send(err);
         // Only update a field if a new value has been passed in
-        if (req.body.name)
-          person.name = req.body.name;
-        if (req.body.address)
-          person.address = req.body.address;
-        if (req.body.email)
-          person.email = req.body.email;
+        for (var key in req.body) {
+          person[key] = req.body[key];
+        }
         // save the `person`
         return person.save((err) => {
           if (err)

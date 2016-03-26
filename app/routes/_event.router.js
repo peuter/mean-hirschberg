@@ -18,11 +18,7 @@ export default (app, router) => {
     // ### Create an `event`
     // Accessed at POST http://localhost:8080/api/event
     .post((req, res) => {
-      Event.create({
-        title : req.body.title,
-        description : req.body.description,
-        location : req.body.location
-      }, (err, event) => {
+      Event.create(req.body, (err, event) => {
         if (err)
           res.send(err);
         // DEBUG
@@ -40,12 +36,7 @@ export default (app, router) => {
         if(err)
           res.send(err);
         else
-          res.json([{
-            title: 'Test',
-            start: '2016-03-24',
-            end: '2016-03-24',
-            allDay: true
-          }]);
+          res.json(event);
       });
     });
 
@@ -70,12 +61,9 @@ export default (app, router) => {
         if (err)
           res.send(err);
         // Only update a field if a new value has been passed in
-        if (req.body.title)
-          event.title = req.body.title;
-        if (req.body.creator)
-          event.creator = req.body.creator;
-        if (req.body.description)
-          event.description = req.body.description;
+        for (var key in req.body) {
+          event[key] = req.body[key];
+        }
         // save the `event`
         return event.save((err) => {
           if (err)
