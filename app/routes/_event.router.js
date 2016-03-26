@@ -11,8 +11,15 @@
 
 // Load the `event` model
 import Event from '../models/event.model';
+import Importer from '../utils/Importer';
 
 export default (app, router) => {
+
+  router.route('/event/import').get((req, res) => {
+    console.log("importing events from sources");
+    Importer.run();
+    res.send(true);
+  });
 
   router.route('/event')
     // ### Create an `event`
@@ -31,12 +38,15 @@ export default (app, router) => {
     // ### Get all of the `events`
     // Accessed at GET http://localhost:8080/api/event
     .get((req, res) => {
-      // Use mongoose to get all recipes in the database
-      Event.find((err, event) => {
+
+      // Use mongoose to get all events in the database
+      Event.find((err, events) => {
         if(err)
           res.send(err);
-        else
-          res.json(event);
+        else {
+          // Parse iCal-Events
+          res.json(events);
+        }
       });
     });
 

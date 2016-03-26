@@ -11,16 +11,17 @@ let eventSchema = new mongoose.Schema({
   description: String,
   organizer: { type: mongoose.Schema.Types.ObjectId, ref: 'Club'},
   location: String,
-  picture: Buffer,
-  attachment: Buffer,
+  picture: String,
+  attachment: String,
   start: Date,
   end: Date,
   allDay: Boolean,
   link: String,
   exports: [{
-    target: String,
-    url: String
-  }],  
+    source: { type: mongoose.Schema.Types.ObjectId, ref: 'EventSource'},
+    uid: String
+  }],
+  updated: { type: Date, default: Date.now },
   _creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User'}
 });
 
