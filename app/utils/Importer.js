@@ -7,10 +7,97 @@
 import Event from '../models/event.model';
 import EventSource from '../models/eventsource.model';
 import Club from '../models/club.model';
+import Person from '../models/person.model';
 import ICAL from '../../node_modules/ical.js/build/ical';
 var request = require('request');
+import Unirest from '../../node_modules/unirest/index';
+import Typo3 from '../utils/Typo3';
 
 export default class Importer {
+
+  static importClubsAndPeoples(req, res) {
+    Unirest.get('http://www.hirschberg-sauerland.de/rest/VirtualObject-Address')
+      .headers({'Accept': 'application/json'})
+      .end((response) => {
+        if (response.statusCode === 200) {
+          var counters =  {
+            clubs: {
+              found: 0,
+              created: 0,
+              updated: 0
+            },
+            persons: {
+              found: 0,
+              created: 0,
+              updated: 0
+            }
+          };
+          response.body.forEach((address) => {
+            if (address.pageId !== 426 && address.deleted === false && address.isOrganizer === true && address.company) {
+
+              // split in club and person
+              var clubData = {
+                name            : address.company,
+                foundationYear  : Typo3.convertDate(address.birthday).getFullYear(),
+                updated         : Typo3.convertDate(address.updated),
+                logo            : address.logo,
+                contactRole     : address.title,
+                homepage        : address.homepage,
+                emailAddress    : address.emailAddress,
+                externalUid     : address.externalUid
+              };
+              var contactData = {
+                name: {
+                  first: address.first_name,
+                  last: address.last_name
+                },
+                address: {
+                  street: address.address,
+                  zip: address.zip,
+                  city: address.city
+                },
+                email: address.emailAddress,
+                externalUid: address.externalUid,
+                updated: Typo3.convertDate(address.updated),
+              };
+
+              if (contactData.externalUid) {
+                var options = {upsert: true, runValidators: true, setDefaultsOnInsert: true};
+                // find and update/create person
+                Person.findOneAndUpdate({externalUid: contactData.externalUid}, contactData, options, (err, person) => {
+                  counters.persons.found++;
+                  clubData.contact = person;
+                  Club.findOne({externalUid: clubData.externalUid}).exec().then((club) => {
+                    counters.clubs.found++;
+                    if (!club) {
+                      // create Club
+                      counters.clubs.created++;
+                      return Promise.cast(Club.create(clubData).exec());
+                    } else if (club.updated < clubData.updated) {
+                      // update club with new data
+                      club.set(clubData);
+                      counters.clubs.updated++;
+                      return Promise.cast(club.save().exec());
+                    } else {
+                      return club;
+                    }
+                  }).then(club => {
+                    console.log(`Club: ${club}`);
+                  }).catch((err) => {
+                    console.log(`Error: ${err}`);
+                    res.send(err);
+                  });
+                });
+              }
+            }
+          });
+          console.log(`Counters: ${counters}`);
+          res.send("import done");
+        } else {
+          res.send(response);
+        }
+      });
+  }
 
   static run() {
     EventSource.find({active: true}, (err, sources) => {
@@ -24,19 +111,7 @@ export default class Importer {
             }
           }
         });
-      } //else {
-        // create default source
-      //   EventSource.create({
-      //     name: 'Typo3',
-      //     url: 'http://www.hirschberg-sauerland.de/index.php?id=373&type=150&L=0&tx_cal_controller%5Bcalendar%5D=1&tx_cal_controller%5Bview%5D=ics&cHash=b1aa5a58b6552eaba4eae2551f8d6d75'
-      //   }, (err, source) => {
-      //     if (err) {
-      //       console.log(err);
-      //     } else {
-      //       console.log(`default source created ${source}`);
-      //     }
-      //   })
-      // }
+      }
     });
   }
 

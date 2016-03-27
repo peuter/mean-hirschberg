@@ -15,6 +15,7 @@
  */
 import {Component} from 'angular2/core';
 import {RouteConfig, Router} from 'angular2/router';
+import {MegaMenu} from 'primeng/primeng';
 
 import {Home} from './home/home';
 
@@ -32,32 +33,26 @@ import {Club} from './club/club.component';
 @Component({
   selector: 'app',
   providers: [  ],
-  directives: [ Event, Person, Club, NgFor],
+  directives: [ Event, Person, Club, NgFor, MegaMenu],
   pipes: [],
   // Load our main `Sass` file into our `app` `component`
   styleUrls: [require('!style!css!sass!../sass/main.scss')],
   template: `
     <header>
-      <nav>
+      <p-megaMenu>
         <h1>{{ name }}</h1>
         <ul>
           <li router-active>
-            <a [routerLink]=" ['Index'] ">Index</a>
+            <a data-icon="fa-users" [routerLink]=" ['Person'] ">Personen</a>
           </li>
           <li router-active>
-            <a [routerLink]=" ['Home'] ">Home</a>
+            <a data-icon="fa-circle-thin"  [routerLink]=" ['Club'] ">Vereine</a>
           </li>
           <li router-active>
-            <a [routerLink]=" ['Person'] ">Personen</a>
-          </li>
-          <li router-active>
-            <a [routerLink]=" ['Club'] ">Vereine</a>
-          </li>
-          <li router-active>
-            <a [routerLink]=" ['Event'] ">Termine</a>
+            <a data-icon="fa-calendar" [routerLink]=" ['Event'] ">Termine</a>
           </li>
         </ul>
-      </nav>
+      </p-megaMenu>
     </header>
 
     <main>

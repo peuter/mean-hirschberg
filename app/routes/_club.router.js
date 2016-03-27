@@ -11,8 +11,13 @@
 
 // Load the `club` model
 import Club from '../models/club.model';
+import Importer from '../utils/Importer';
 
 export default (app, router) => {
+
+  router.route('/club/import').get((req, res) => {
+    Importer.importClubsAndPeoples(req, res);
+  });
 
   router.route('/club')
     // ### Create an `club`

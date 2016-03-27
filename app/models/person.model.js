@@ -15,7 +15,8 @@ let personSchema = new mongoose.Schema({
     city: { type: String}
   },
   email: { type: String},
-  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User'}
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+  updated: { type: Date, default: Date.now },
 });
 personSchema.virtual('name.full').get(function () {
   return this.name.first + ' ' + this.name.last;

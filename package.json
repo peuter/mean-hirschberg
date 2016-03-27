@@ -64,6 +64,7 @@
     "rxjs": "5.0.0-beta.2",
     "socket.io": "^1.4.5",
     "systemjs": "^0.19.24",
+    "unirest": "^0.4.2",
     "zone.js": "^0.6.6"
   },
   "devDependencies": {

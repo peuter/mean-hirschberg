@@ -9,9 +9,11 @@ let clubSchema = new mongoose.Schema({
   updated         : { type: Date, default: Date.now },
   logo            : Buffer,
   contact         : { type: mongoose.Schema.Types.ObjectId, ref: 'Person'},
+  contactRole     : String,
   homepage        : String,
   emailAddress    : String,
-  facebookUrl     : String
+  facebookUrl     : String,
+  externalUid     : String
 });
 
 export default mongoose.model('Club', clubSchema);

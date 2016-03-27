@@ -69,7 +69,7 @@ export class Event {
       this.event.end = end.format();
     }
 
-    this.event.id = e.calEvent.id;
+    this.event._id = e.calEvent._id;
     this.event.start = start.format();
     this.event.allDay = e.calEvent.allDay;
     this.dialogVisible = true;
@@ -77,7 +77,7 @@ export class Event {
 
   saveEvent() {
     //update
-    if(!this.event.id) {
+    if(!this.event._id) {
       this.createEvent(this.event);
     }
 
@@ -92,7 +92,7 @@ export class Event {
   }
 
   deleteEvent(id) {
-    this.eventService.deleteEvent(this.event.id)
+    this.eventService.deleteEvent(this.event._id)
       .subscribe((res) => {
           this.events = res;
       });
@@ -101,7 +101,7 @@ export class Event {
 }
 
 export class MyEvent {
-  id: number;
+  _id: number;
   title: string;
   start: string;
   end: string;

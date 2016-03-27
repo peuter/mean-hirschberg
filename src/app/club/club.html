@@ -22,6 +22,13 @@
               <div class="form-group">
                   <input type="text" class="form-control input-lg text-center" placeholder="Name" [(ngModel)]="clubData.name" required />
                   <input type="text" class="form-control input-lg text-center" placeholder="Emailadresse" [(ngModel)]="clubData.email" />
+                  <!--p-dropdown [options]="persons"  [(value)]="contact_id">
+                    <template #p>
+                      <li class="ui-helper-clearfix" style="position: relative">
+                        <div style="font-size:14px;float:right;margin-top:2px">{{p.name.first}} {{p.name.last}}</div>
+                      </li>
+                    </template>
+                  </p-dropdown-->
                   <select placeholder="Ansprechpartner" class="form-control input-lg" required  [(ngModel)]="clubData.contact">
                     <option *ngFor="#p of persons" [value]="p._id">{{p.name.first}} {{p.name.last}}</option>
                   </select>

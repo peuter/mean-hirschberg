@@ -4,14 +4,14 @@ import {PersonService} from '../person/person.service';
 import {Person} from '../person/person.component';
 import {HTTP_PROVIDERS} from 'angular2/http';
 import {NgFor} from 'angular2/common';
-import {Spinner} from 'primeng/primeng';
+import {Spinner, Dropdown} from 'primeng/primeng';
 
 // Create metadata with the `@Component` decorator
 @Component({
     selector: 'club',
     providers: [...HTTP_PROVIDERS, ClubService, PersonService],
     template: require('./club.html'),
-    directives: [Spinner, NgFor]
+    directives: [Spinner, NgFor, Dropdown]
 })
 export class Club {
 

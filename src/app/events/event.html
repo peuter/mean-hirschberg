@@ -1,7 +1,7 @@
-<p-schedule [events]="events" [header]="header" [eventLimit]="4" [editable]="true"
+<p-schedule [events]="events" [header]="header" [eventLimit]="4" [editable]="true" [aspectRatio]="2"
             (onDayClick)="handleDayClick($event)" (onEventClick)="handleEventClick($event)"></p-schedule>
 
-<p-dialog header="Event Details" [(visible)]="dialogVisible" [responsive]="true" showEffect="fade" [modal]="false">
+<p-dialog header="Event Details" [(visible)]="dialogVisible" [responsive]="true" showEffect="fade" [modal]="true">
   <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="event">
     <div class="ui-grid-row">
       <div class="ui-grid-col-4"><label for="title">Titel</label></div>
