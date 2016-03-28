@@ -13,6 +13,8 @@
 /*
  * Angular 2 decorators and services
  */
+import {App, Platform} from 'ionic-angular';
+import {StatusBar} from 'ionic-native';
 import {Component} from 'angular2/core';
 import {RouteConfig, Router} from 'angular2/router';
 import {MegaMenu} from 'primeng/primeng';
@@ -30,6 +32,10 @@ import {Club} from './club/club.component';
  * App Component
  * Top Level Component
  */
+@App({
+  template: '<ion-nav [root]="rootPage"></ion-nav>',
+  config: {} // http://ionicframework.com/docs/v2/api/config/Config/
+})
 @Component({
   selector: 'app',
   providers: [  ],
@@ -74,12 +80,16 @@ import {Club} from './club/club.component';
   // es6-promise-loader and webpack `require`
   { path: '/about', name: 'About', loader: () => require('es6-promise!./about/about')('About') },
 ])
-export class App {
+export class MyApp {
   name = 'Hirschberg Connected';
   url = 'https://www.hirschberg-sauerland.de';
 
-  constructor() {
-
+  constructor(platform: Platform) {
+    platform.ready().then(() => {
+      // Okay, so the platform is ready and our plugins are available.
+      // Here you can do any higher level native things you might need.
+      StatusBar.styleDefault();
+    });
   }
 }
 

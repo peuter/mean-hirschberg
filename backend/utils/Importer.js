@@ -67,22 +67,23 @@ export default class Importer {
                 Person.findOneAndUpdate({externalUid: contactData.externalUid}, contactData, options, (err, person) => {
                   counters.persons.found++;
                   clubData.contact = person;
-                  Club.findOne({externalUid: clubData.externalUid}).exec().then((club) => {
-                    counters.clubs.found++;
+                  Club.findOne({externalUid: clubData.externalUid}).exec().then(club => {
                     if (!club) {
                       // create Club
                       counters.clubs.created++;
-                      return Promise.cast(Club.create(clubData).exec());
+                      return Club.create(clubData);
                     } else if (club.updated < clubData.updated) {
                       // update club with new data
                       club.set(clubData);
                       counters.clubs.updated++;
-                      return Promise.cast(club.save().exec());
+                      return club.save();
                     } else {
+                      console.log(`Club '${club.name}' not updated`);
                       return club;
                     }
                   }).then(club => {
-                    console.log(`Club: ${club}`);
+                    counters.clubs.found++;
+                    console.log(counters.clubs);
                   }).catch((err) => {
                     console.log(`Error: ${err}`);
                     res.send(err);
@@ -91,7 +92,6 @@ export default class Importer {
               }
             }
           });
-          console.log(`Counters: ${counters}`);
           res.send("import done");
         } else {
           res.send(response);

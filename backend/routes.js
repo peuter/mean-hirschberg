@@ -71,7 +71,7 @@ export default (app, router, passport) => {
   // ### Frontend Routes
 
   app.use('/node_modules', serveStatic("./node_modules"));
-  app.use('/assets', serveStatic("./src/assets"));
+  app.use('/assets', serveStatic("./app/assets"));
 
   // Route to handle all Angular requests
   app.get('*', (req, res) => {

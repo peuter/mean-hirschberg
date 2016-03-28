@@ -118,7 +118,7 @@ let router = express.Router();
 
 // Load our application API routes
 // Pass in our express and express router instances
-import routes from './app/routes';
+import routes from './backend/routes';
 
 // Pass in instances of the express app, router, and passport
 routes(app, router, passport);

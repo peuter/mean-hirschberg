@@ -12,10 +12,10 @@
     "typings/main"
   ],
   "filesGlob": [
-    "./src/**/*.ts",
+    "./app/**/*.ts",
     "./test/**/*.ts",
     "!./node_modules/**/*.ts",
-    "src/custom-typings.d.ts",
+    "app/custom-typings.d.ts",
     "typings/browser.d.ts"
   ],
   "awesomeTypescriptLoaderOptions": {

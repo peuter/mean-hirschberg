@@ -12,7 +12,7 @@ var HMR = helpers.hasProcessFlag('hot');
 var config = require('./config/config.json');
 
 var metadata = {
-  title: 'Angular 2 MEAN Webpack Starter Kit by @datatype_void',
+  title: 'iMeaon Hirschberg Community',
   baseUrl: '/',
   host: '0.0.0.0',
   port: 8080,
@@ -32,9 +32,9 @@ module.exports = {
 
   // our angular app
   entry: {
-    'polyfills': './src/polyfills.ts',
-    'vendor': './src/vendor.ts',
-    'app': './src/main.ts'
+    'polyfills': './app/polyfills.ts',
+    'vendor': './app/vendor.ts',
+    'app': './app/main.ts'
   },
 
   resolve: {
@@ -43,7 +43,7 @@ module.exports = {
 
   // Config for our build files
   output: {
-    path: helpers.root('dist'),
+    path: helpers.root('www/build'),
     filename: '[name].bundle.js',
     sourceMapFilename: '[name].map',
     chunkFilename: '[id].chunk.js'
@@ -95,10 +95,10 @@ module.exports = {
     new webpack.optimize.OccurenceOrderPlugin(true),
     new webpack.optimize.CommonsChunkPlugin({ name: ['app', 'vendor', 'polyfills'], filename: '[name].bundle.js', minChunks: Infinity }),
     // static assets
-    new CopyWebpackPlugin([ { from: 'src/assets', to: 'assets' } ]),
+    new CopyWebpackPlugin([ { from: 'app/assets', to: 'assets' } ]),
     // generating html
     new HtmlWebpackPlugin({
-      template: 'src/index.html',
+      template: 'app/index.html',
       chunksSortMode: 'none'
     }),
     // Environment Helpers  (when adding more properties make sure you include them in custom-typings.d.ts)
@@ -115,7 +115,7 @@ module.exports = {
   tslint: {
     emitErrors: false,
     failOnHint: false,
-    resourcePath: 'src',
+    resourcePath: 'sapprc',
   },
 
   devServer: {

@@ -1,0 +1,7 @@
+{
+  "name": "iMeanHirschberg",
+  "app_id": "org.tb.imean",
+  "v2": true,
+  "typescript": true,
+  "documentRoot": "src"
+}

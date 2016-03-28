@@ -14,7 +14,7 @@
 import LocalStrategy from 'passport-local';
 
 // Load user model
-import User from '../app/models/user.model.js';
+import User from '../backend/models/user.model.js';
 
 export default (passport) => {
 
