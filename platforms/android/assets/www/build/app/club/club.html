@@ -1,0 +1,45 @@
+<div class="container">
+
+  <div class="jumbotron text-center">
+      <h1>Vereine <span class="label label-info">{{clubs.length}}</span></h1>
+  </div>
+
+  <div id="clubs-list" class="row">
+      <div class="col-sm-4 col-sm-offset-4">
+          <div class="checkbox" *ngFor="#club of clubs">
+              <label>
+                  <input type="checkbox" (click)="deleteClub(club._id)" bind-checked="false">
+                  {{ club.name }}
+              </label>
+          </div>
+
+      </div>
+  </div>
+
+  <div id="club-form" class="row">
+      <div class="col-sm-8 col-sm-offset-2 text-center">
+          <form>
+              <div class="form-group">
+                  <input type="text" class="form-control input-lg text-center" placeholder="Name" [(ngModel)]="clubData.name" required />
+                  <input type="text" class="form-control input-lg text-center" placeholder="Emailadresse" [(ngModel)]="clubData.email" />
+                  <!--p-dropdown [options]="persons"  [(value)]="contact_id">
+                    <template #p>
+                      <li class="ui-helper-clearfix" style="position: relative">
+                        <div style="font-size:14px;float:right;margin-top:2px">{{p.name.first}} {{p.name.last}}</div>
+                      </li>
+                    </template>
+                  </p-dropdown-->
+                  <select placeholder="Ansprechpartner" class="form-control input-lg" required  [(ngModel)]="clubData.contact">
+                    <option *ngFor="#p of persons" [value]="p._id">{{p.name.first}} {{p.name.last}}</option>
+                  </select>
+                  <p-spinner class="form-control input-lg" size="4" [(value)]="clubData.foundationYear" [min]="1899" [max]="2020"></p-spinner>
+              </div>
+
+              <!-- createPerson() WILL CREATE NEW PERSONS -->
+              <button type="submit" class="btn btn-primary btn-lg"
+                (click)="createClub()">Add</button>
+          </form>
+      </div>
+  </div>
+
+</div>

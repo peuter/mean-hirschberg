@@ -1,0 +1,40 @@
+<div class="container">
+
+  <!-- HEADER AND PERSON COUNT -->
+  <div class="jumbotron text-center">
+      <h1>Personen <span class="label label-info">{{persons.length}}</span></h1>
+  </div>
+
+  <!-- PERSON LIST -->
+  <div id="person-list" class="row">
+      <div class="col-sm-4 col-sm-offset-4">
+
+          <!-- LOOP OVER THE TODOS IN $scope.persons -->
+          <div class="checkbox" *ngFor="#person of persons">
+              <label>
+                  <input type="checkbox" (click)="deletePerson(person._id)" bind-checked="false">
+                  {{ person.name.first }} {{ person.name.last }} - &lt;{{ person.email }}&gt;
+              </label>
+          </div>
+
+      </div>
+  </div>
+
+  <!-- FORM TO CREATE PERSONS -->
+  <div id="person-form" class="row">
+      <div class="col-sm-8 col-sm-offset-2 text-center">
+          <form>
+              <div class="form-group">
+                  <input type="text" class="form-control input-lg text-center" placeholder="Vorname" [(ngModel)]="personData.name.first" required>
+                  <input type="text" class="form-control input-lg text-center" placeholder="Name" [(ngModel)]="personData.name.last" required>
+                  <input type="text" class="form-control input-lg text-center" placeholder="Email" [(ngModel)]="personData.email" required>
+              </div>
+
+              <!-- createPerson() WILL CREATE NEW PERSONS -->
+              <button type="submit" class="btn btn-primary btn-lg"
+                (click)="createPerson()">Add</button>
+          </form>
+      </div>
+  </div>
+
+</div>

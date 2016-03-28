@@ -1,0 +1,29 @@
+<p-schedule [events]="events" [header]="header" [eventLimit]="4" [editable]="true" [aspectRatio]="2"
+            (onDayClick)="handleDayClick($event)" (onEventClick)="handleEventClick($event)"></p-schedule>
+
+<p-dialog header="Event Details" [(visible)]="dialogVisible" [responsive]="true" showEffect="fade" [modal]="true">
+  <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="event">
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4"><label for="title">Titel</label></div>
+      <div class="ui-grid-col-8"><input pInputText id="title" [(ngModel)]="event.title" /></div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4"><label for="start">Start</label></div>
+      <div class="ui-grid-col-8"><p-calendar id="start" dateFormat="yy-mm-dd" [(value)]="event.start"></p-calendar></div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4"><label for="end">Ende</label></div>
+      <div class="ui-grid-col-8"><p-calendar id="end" dateFormat="yy-mm-dd" [(value)]="event.end" placeholder="Optional"></p-calendar></div>
+    </div>
+    <div class="ui-grid-row">
+      <div class="ui-grid-col-4"><label for="allDay">Ganzer Tag</label></div>
+      <div class="ui-grid-col-8"><p-toggleButton [(checked)]="event.allDay" style="width:150px" onLabel="Ja" offLabel="Nein"></p-toggleButton></div>
+    </div>
+  </div>
+  <footer>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+      <button type="button" pButton icon="fa-close" (click)="deleteEvent()" label="Löschen"></button>
+      <button type="button" pButton icon="fa-check" (click)="saveEvent()" label="Speichern"></button>
+    </div>
+  </footer>
+</p-dialog>
