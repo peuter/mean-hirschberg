@@ -27,7 +27,7 @@ module.exports = {
   metadata: metadata,
   devtool: 'cheap-module-eval-source-map',
   // cache: true,
-  debug: false,
+  debug: true,
   // devtool: 'eval' // for faster builds use 'eval'
 
   // our angular app

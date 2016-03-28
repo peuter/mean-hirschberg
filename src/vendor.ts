@@ -13,6 +13,14 @@ import 'angular2/router';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 
+// PrimeNg
+/*
+import 'primeng/primeng';
+import 'primeui/primeui-ng-all.min';
+import 'moment/moment';
+import 'fullcalendar/dist/fullcalendar.min';
+import 'fullcalendar/dist/lang/de';
+*/
 if ('production' === ENV) {
   // Production
 

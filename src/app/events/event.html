@@ -1,7 +1,7 @@
 <p-schedule [events]="events" [header]="header" [eventLimit]="4" [editable]="true" [aspectRatio]="2"
             (onDayClick)="handleDayClick($event)" (onEventClick)="handleEventClick($event)"></p-schedule>
 
-<p-dialog header="Event Details" [(visible)]="dialogVisible" [responsive]="true" showEffect="fade" [modal]="true">
+<p-dialog header="Event Details" [(visible)]="dialogVisible" [responsive]="true" showEffect="fade" [modal]="false">
   <div class="ui-grid ui-grid-responsive ui-fluid" *ngIf="event">
     <div class="ui-grid-row">
       <div class="ui-grid-col-4"><label for="title">Titel</label></div>
@@ -9,11 +9,11 @@
     </div>
     <div class="ui-grid-row">
       <div class="ui-grid-col-4"><label for="start">Start</label></div>
-      <div class="ui-grid-col-8"><p-calendar id="start" dateFormat="yy-mm-dd" [(value)]="event.start"></p-calendar></div>
+      <div class="ui-grid-col-8"><p-calendar id="start" dateFormat="dd.mm.yy" [(value)]="event.start"></p-calendar></div>
     </div>
     <div class="ui-grid-row">
       <div class="ui-grid-col-4"><label for="end">Ende</label></div>
-      <div class="ui-grid-col-8"><p-calendar id="end" dateFormat="yy-mm-dd" [(value)]="event.end" placeholder="Optional"></p-calendar></div>
+      <div class="ui-grid-col-8"><p-calendar id="end" dateFormat="dd.mm.yy" [(value)]="event.end" placeholder="Optional"></p-calendar></div>
     </div>
     <div class="ui-grid-row">
       <div class="ui-grid-col-4"><label for="allDay">Ganzer Tag</label></div>

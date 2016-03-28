@@ -6,35 +6,46 @@
   </div>
 
   <!-- PERSON LIST -->
-  <div id="person-list" class="row">
-      <div class="col-sm-4 col-sm-offset-4">
-
-          <!-- LOOP OVER THE TODOS IN $scope.persons -->
-          <div class="checkbox" *ngFor="#person of persons">
-              <label>
-                  <input type="checkbox" (click)="deletePerson(person._id)" bind-checked="false">
-                  {{ person.name.first }} {{ person.name.last }} - &lt;{{ person.email }}&gt;
-              </label>
-          </div>
-
-      </div>
-  </div>
+  <p-dataTable [value]="persons" [responsive]="true" [rows]="10" [paginator]="true"
+               selectionMode="single" [(selection)]="selectedPerson"
+               (onRowSelect)="handleRowSelect($event)">
+    <p-column field="externalUid" header="ID"></p-column>
+    <p-column field="name" header="Name">
+      <template #col #row="rowData">
+        {{row[col.field].first}} {{row[col.field].last}}
+      </template>
+    </p-column>
+    <p-column field="address" header="Anschrift">
+      <template #col #row="rowData">
+        {{row[col.field].street}} {{row[col.field].hno}}
+        {{row[col.field].zip}} {{row[col.field].city}}
+      </template>
+    </p-column>
+    <p-column field="email" header="Email"></p-column>
+    <p-column field="updated" header="Aktualisiert">
+      <template #col #row="rowData">
+        {{row[col.field] | string2Date | date:"ddMMy HH:mm"}}
+      </template>
+    </p-column>
+  </p-dataTable>
 
   <!-- FORM TO CREATE PERSONS -->
-  <div id="person-form" class="row">
+  <p-dialog header="Person Details" [(visible)]="dialogVisible" [responsive]="true" showEffect="fade" [modal]="true" *ngIf="selectedPerson">
+    <div id="person-form" class="row">
       <div class="col-sm-8 col-sm-offset-2 text-center">
-          <form>
-              <div class="form-group">
-                  <input type="text" class="form-control input-lg text-center" placeholder="Vorname" [(ngModel)]="personData.name.first" required>
-                  <input type="text" class="form-control input-lg text-center" placeholder="Name" [(ngModel)]="personData.name.last" required>
-                  <input type="text" class="form-control input-lg text-center" placeholder="Email" [(ngModel)]="personData.email" required>
-              </div>
+        <form>
+          <div class="form-group">
+            <input type="text" class="form-control input-lg text-center" placeholder="Vorname" [(ngModel)]="selectedPerson.name.first" required>
+            <input type="text" class="form-control input-lg text-center" placeholder="Name" [(ngModel)]="selectedPerson.name.last" required>
+            <input type="text" class="form-control input-lg text-center" placeholder="Email" [(ngModel)]="selectedPerson.email" required>
+          </div>
 
-              <!-- createPerson() WILL CREATE NEW PERSONS -->
-              <button type="submit" class="btn btn-primary btn-lg"
-                (click)="createPerson()">Add</button>
-          </form>
+          <!-- createPerson() WILL CREATE NEW PERSONS -->
+          <button type="submit" class="btn btn-primary btn-lg"
+                  (click)="savePerson()">Add</button>
+        </form>
       </div>
-  </div>
+    </div>
+  </p-dialog>
 
 </div>

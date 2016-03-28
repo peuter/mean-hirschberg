@@ -37,7 +37,7 @@ export default (app, router) => {
     // Accessed at GET http://localhost:8080/api/club
     .get((req, res) => {
       // Use mongoose to get all recipes in the database
-      Club.find((err, club) => {
+      Club.find().populate('contact').exec((err, club) => {
         if(err)
           res.send(err);
         else
@@ -50,7 +50,7 @@ export default (app, router) => {
     // Accessed at GET http://localhost:8080/api/club/:club_id
     .get((req, res) => {
       // Use mongoose to fetch a single `recipe` by id in the database
-      Club.findOne(req.params.club_id, (err, club) => {
+      Club.findOne(req.params.club_id).populate('contact').exec((err, club) => {
         if(err)
           res.send(err);
         else
@@ -62,7 +62,7 @@ export default (app, router) => {
     // Accessed at PUT http://localhost:8080/api/club/:club_id
     .put((req, res) => {
       // use our `club` model to find the `club` we want
-      Club.findOne(req.params.club_id, (err, club) => {
+      Club.findOne(req.params.club_id).populate('contact').exec((err, club) => {
         if (err)
           res.send(err);
         // Only update a field if a new value has been passed in
@@ -90,7 +90,7 @@ export default (app, router) => {
           res.send(err);
         else
           console.log('Club successfully deleted!');
-        Club.find((err, clubs) => {
+        Club.find().populate('contact').exec((err, clubs) => {
           if(err)
             res.send(err);
           res.json(clubs);

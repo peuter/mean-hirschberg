@@ -4,35 +4,37 @@
       <h1>Vereine <span class="label label-info">{{clubs.length}}</span></h1>
   </div>
 
-  <div id="clubs-list" class="row">
-      <div class="col-sm-4 col-sm-offset-4">
-          <div class="checkbox" *ngFor="#club of clubs">
-              <label>
-                  <input type="checkbox" (click)="deleteClub(club._id)" bind-checked="false">
-                  {{ club.name }}
-              </label>
-          </div>
+  <p-dataTable [value]="clubs" sortField="name" [sortOrder]="1" [responsive]="true"
+               [rows]="10" [paginator]="true"
+               selectionMode="single" [(selection)]="selectedClub"
+               (onRowSelect)="handleRowSelect($event)">
+    <p-column field="externalUid" header="ID"></p-column>
+    <p-column field="name" header="Name"></p-column>
+    <p-column field="foundationYear" header="Gründungsjahr"></p-column>
+    <p-column field="homepage" header="WWW"></p-column>
+    <p-column field="contact" header="Kontakt">
+      <template #col #row="rowData">
+        {{row[col.field].name.first}} {{row[col.field].name.last}}
+      </template>
+    </p-column>
+    <p-column>
+      <template #club="rowData">
+        <button type="button" pButton (click)="deleteClub(club._id)" icon="fa-trash">Löschen</button>
+      </template>
+    </p-column>
+  </p-dataTable>
 
-      </div>
-  </div>
-
-  <div id="club-form" class="row">
+  <p-dialog header="Vereinsdetails" [(visible)]="dialogVisible" [responsive]="true" showEffect="fade" [modal]="true" *ngIf="selectedClub">
+    <div id="club-form" class="row">
       <div class="col-sm-8 col-sm-offset-2 text-center">
           <form>
               <div class="form-group">
-                  <input type="text" class="form-control input-lg text-center" placeholder="Name" [(ngModel)]="clubData.name" required />
-                  <input type="text" class="form-control input-lg text-center" placeholder="Emailadresse" [(ngModel)]="clubData.email" />
-                  <!--p-dropdown [options]="persons"  [(value)]="contact_id">
-                    <template #p>
-                      <li class="ui-helper-clearfix" style="position: relative">
-                        <div style="font-size:14px;float:right;margin-top:2px">{{p.name.first}} {{p.name.last}}</div>
-                      </li>
-                    </template>
-                  </p-dropdown-->
-                  <select placeholder="Ansprechpartner" class="form-control input-lg" required  [(ngModel)]="clubData.contact">
+                  <input type="text" class="form-control input-lg text-center" placeholder="Name" [(ngModel)]="selectedClub.name" required />
+                  <input type="text" class="form-control input-lg text-center" placeholder="Emailadresse" [(ngModel)]="selectedClub.email" />
+                  <select placeholder="Ansprechpartner" class="form-control input-lg" required [(ngModel)]="selectedClub.contact._id">
                     <option *ngFor="#p of persons" [value]="p._id">{{p.name.first}} {{p.name.last}}</option>
                   </select>
-                  <p-spinner class="form-control input-lg" size="4" [(value)]="clubData.foundationYear" [min]="1899" [max]="2020"></p-spinner>
+                  <p-spinner class="form-control input-lg" size="4" [(value)]="selectedClub.foundationYear" [min]="1899" [max]="2020"></p-spinner>
               </div>
 
               <!-- createPerson() WILL CREATE NEW PERSONS -->
@@ -40,6 +42,6 @@
                 (click)="createClub()">Add</button>
           </form>
       </div>
-  </div>
-
+    </div>
+  </p-dialog>
 </div>
