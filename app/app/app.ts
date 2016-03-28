@@ -37,7 +37,7 @@ import {Club} from './club/club.component';
   config: {} // http://ionicframework.com/docs/v2/api/config/Config/
 })
 @Component({
-  selector: 'app',
+  selector: 'ion-app',
   providers: [  ],
   directives: [ Event, Person, Club, NgFor, MegaMenu],
   pipes: [],
